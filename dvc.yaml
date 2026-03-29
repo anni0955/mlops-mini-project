@@ -1,0 +1,72 @@
+stages:
+  data_ingestion:
+    cmd: python src/data/data_ingestion.py
+    
+    deps:
+    - src/data/data_ingestion.py
+    - params.yaml
+    
+    params:
+    - data_ingestion.test_size 
+    - data_ingestion.random_state
+
+    outs:
+    - data/raw
+
+
+  data_preprocessing:
+    cmd: python src/data/data_preprocessing.py
+
+    deps:
+    - data/raw/train.csv
+    - data/raw/test.csv
+    - src/data/data_preprocessing.py
+
+    outs:
+    - data/interim
+
+  feature_engineering:
+    cmd: python src/features/feature_engineering.py
+
+    deps:
+    - data/interim/interim_train.csv
+    - data/interim/interim_test.csv
+    - src/features/feature_engineering.py
+
+    params:
+    - feature_engineering.max_features
+    outs:
+    - data/processed
+    - models/vectorizer.joblib
+
+  model_building:
+    cmd: python src/model/model_building.py
+
+    deps: 
+    - src/model/model_building.py
+    - params.yaml
+    - data/processed/train_bow.csv
+
+    params:
+    - model_building.C
+    - model_building.penalty
+    - model_building.solver
+
+    outs:
+    - models/model.joblib
+  
+  model_evaluation:
+    cmd: python src/model/model_evaluation.py
+
+    deps: 
+    - src/model/model_evaluation.py
+    - data/processed/test_bow.csv
+    - models/model.joblib
+
+    params:
+    - model_building.C
+    - model_building.penalty
+    - model_building.solver
+
+    outs:
+    - reports/metrics.json
