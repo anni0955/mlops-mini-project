@@ -1,4 +1,4 @@
 [core]
     remote = myremote
 ['remote "myremote"']
-    url = /tmp
+    url = s3://tweet-sentiment-data-bucket
