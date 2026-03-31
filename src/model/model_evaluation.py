@@ -7,9 +7,6 @@ import json
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
 
 import mlflow
-# import dagshub 
-
-# dagshub.init(repo_owner='anni0955', repo_name='mlops-mini-project', mlflow=True)
 
 mlflow.set_tracking_uri('https://dagshub.com/anni0955/mlops-mini-project.mlflow')
 
@@ -20,7 +17,7 @@ logger.setLevel('DEBUG')
 console_handler = logging.StreamHandler()
 console_handler.setLevel('DEBUG')
 
-file_handler = logging.FileHandler('logs/erros.log')
+file_handler = logging.FileHandler('logs/errors.log')
 file_handler.setLevel('DEBUG')
 
 formatter = logging.Formatter(fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

@@ -19,7 +19,7 @@ logger.setLevel('DEBUG')
 console_handler = logging.StreamHandler()
 console_handler.setLevel('DEBUG')
 
-file_handler = logging.FileHandler('logs/erros.log')
+file_handler = logging.FileHandler('logs/errors.log')
 file_handler.setLevel('DEBUG')
 
 formatter = logging.Formatter(fmt='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
