@@ -1,6 +1,6 @@
 data_ingestion:
   test_size: .2
-  random_state: 16
+  random_state: 18
 
 feature_engineering:
   max_features: 10000

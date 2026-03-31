@@ -11,7 +11,10 @@ logger.setLevel('DEBUG')
 console_handler = logging.StreamHandler()
 console_handler.setLevel('DEBUG')
 
-file_handler = logging.FileHandler('logs/erros.log')
+log_dir = Path("logs")
+log_dir.mkdir(parents=True, exist_ok=True)
+
+file_handler = logging.FileHandler('logs/errors.log')
 file_handler.setLevel('DEBUG')
 
 formatter = logging.Formatter(fmt='%(asctime)s - %(name)s -%(levelname)s - %(message)s')
