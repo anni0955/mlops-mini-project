@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 import mlflow 
-import dagshub
 import joblib
 from pathlib import Path
 
@@ -14,9 +13,6 @@ class InputText(BaseModel):
     text: str
 
 
-
-
-dagshub.init(repo_owner='anni0955', repo_name='mlops-mini-project', mlflow=True)
 mlflow.set_tracking_uri('https://dagshub.com/anni0955/mlops-mini-project.mlflow')
 
 

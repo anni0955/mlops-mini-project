@@ -7,9 +7,9 @@ import json
 from sklearn.metrics import accuracy_score, precision_score, recall_score, roc_auc_score
 
 import mlflow
-import dagshub 
+# import dagshub 
 
-dagshub.init(repo_owner='anni0955', repo_name='mlops-mini-project', mlflow=True)
+# dagshub.init(repo_owner='anni0955', repo_name='mlops-mini-project', mlflow=True)
 
 mlflow.set_tracking_uri('https://dagshub.com/anni0955/mlops-mini-project.mlflow')
 
