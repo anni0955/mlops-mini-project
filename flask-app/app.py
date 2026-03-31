@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 from flask import Flask, render_template, request
 import mlflow
 from preprocessing_utility import normalize_text

@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
 import pandas as pd 
 import joblib
 from pathlib import Path
