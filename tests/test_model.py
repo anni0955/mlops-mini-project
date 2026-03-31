@@ -42,7 +42,6 @@ class TestModelLoading(unittest.TestCase):
 
         cls.holdout_data = pd.read_csv(test_data_path)
 
-    @staticmethod
     def test_model_loader_properly(self):
         self.assertIsNotNone(self.model)
 
