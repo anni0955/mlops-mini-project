@@ -56,6 +56,26 @@ class TestModelLoading(unittest.TestCase):
         self.assertEqual(len(prediction), input_df.shape[0])
         self.assertEqual(len(prediction.shape), 1)
 
+    def test_model_performance(self):
+        x_holdout = self.holdout_data.iloc[:, 0:-1]
+        y_holdout = self.holdout_data.iloc[:, -1]
+
+        y_pred_new = self.model.predict(x_holdout)
+
+        accuracy_new = accuracy_score(y_holdout, y_pred_new)
+        precision_new = precision_score(y_holdout, y_pred_new)
+        recall_new = recall_score(y_holdout, y_pred_new)
+        f1_new = f1_score(y_holdout, y_pred_new)
+
+        expected_accuracy = .75
+        expected_precision = .75
+        expected_recall = .75
+        expected_f1 = .75
+
+        self.assertGreaterEqual(accuracy_new, expected_accuracy, f'accuracy should be atleast {expected_accuracy}')
+        self.assertGreaterEqual(precision_new, expected_precision, f'precision should be atleast {expected_precision}')
+        self.assertGreaterEqual(recall_new, expected_recall, f'accuracy should be atleast {expected_recall}')
+        self.assertGreaterEqual(f1_new, expected_f1, f'accuracy should be atleast {expected_f1}')
 
 if __name__ == '__main__':
     unittest.main()
