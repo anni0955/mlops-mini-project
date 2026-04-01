@@ -49,10 +49,10 @@ class TestModelLoading(unittest.TestCase):
         input_text = 'i got colorful marks in the end sem exmanination.'
         input_data = self.vectorizer.transform([input_text])
         
-        input_df = pd.DataFrame(input_data.toarray(), columns=self.vectorizer.get_feature_name_out())
+        input_df = pd.DataFrame(input_data.toarray(), columns=self.vectorizer.get_feature_names_out())
         prediction = self.model.predict(input_df)
 
-        self.assertEqual(input_df.shape[1], len(self.vectorizer.get_feature_name_out()))
+        self.assertEqual(input_df.shape[1], len(self.vectorizer.get_feature_names_out()))
         self.assertEqual(len(prediction), input_df.shape[0])
         self.assertEqual(len(prediction.shape), 1)
 
