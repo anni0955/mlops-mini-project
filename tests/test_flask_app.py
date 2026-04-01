@@ -19,3 +19,7 @@ class FlaskAppTests(unittest.TestCase):
                 b'Happy' in response.data or b'Sad' in response.data,
                 'Response should contain either "Happy" or "Sad"'
             )
+
+
+if __name__ == '__main__':
+    unittest.main()
