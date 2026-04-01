@@ -13,9 +13,8 @@ mlflow.set_tracking_uri('https://dagshub.com/anni0955/mlops-mini-project.mlflow'
 app = Flask(__name__)
 
 model_name = 'LR_model'
-model_version = 'latest'
 
-model_uri = f'models:/{model_name}/{model_version}'
+model_uri = f'models:/{model_name}@champion'
 model = mlflow.pyfunc.load_model(model_uri)
 vecotrizer = joblib.load('models/vectorizer.joblib', 'rb')
 
