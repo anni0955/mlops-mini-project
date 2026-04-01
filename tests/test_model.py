@@ -45,5 +45,17 @@ class TestModelLoading(unittest.TestCase):
     def test_model_loader_properly(self):
         self.assertIsNotNone(self.model)
 
+    def test_model_signature(self):
+        input_text = 'i got colorful marks in the end sem exmanination.'
+        input_data = self.vectorizer.transform([input_text])
+        
+        input_df = pd.DataFrame(input_data.toarry(), columns=[str(i) for i in range(input_data.shape[1])])
+        prediction = self.model.predict(input_df)
+
+        self.assertEqual(input_df.shape[1], len(self.vectorizer.get_feature_name_out()))
+        self.assertEqual(len(prediction), input_df.shape[0])
+        self.assertEqual(len(prediction.shape), 1)
+
+
 if __name__ == '__main__':
     unittest.main()
